@@ -1,0 +1,408 @@
+.menu-display-container {
+    padding: 1rem;
+    font-family: Arial, sans-serif;
+}
+
+.menu-type-cell {
+    font-weight: bold;
+    text-align: left;
+    background-color: #eef4ff !important;
+}
+
+.category-cell {
+    text-align: left;
+    padding-left: 20px;
+    background-color: #fff !important;
+}
+
+.time-cell {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+    color: #666;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.scroll-indicator svg {
+    margin: 0 5px;
+    animation: scrollHint 1.5s infinite;
+}
+
+@keyframes scrollHint {
+    0% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    100% { transform: translateX(-3px); }
+}
+
+/* Styling for multiple menu items within a cell */
+.menu-item-entry {
+    padding: 2px 0;
+    position: relative; /* For checkbox positioning */
+}
+
+.menu-item-entry:not(:last-child) {
+    border-bottom: 1px dashed #e0e0e0;
+    margin-bottom: 4px;
+}
+
+/* Checkbox container and styling */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    padding: 2px 0;
+}
+
+.item-checkbox {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.item-label {
+    flex: 1;
+}
+
+/* Unchecked item styling */
+.menu-item-entry.unchecked .item-label {
+    text-decoration: line-through;
+    opacity: 0.5;
+    color: #e74c3c;
+}
+
+/* Edit Icons */
+.edit-icon-container {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.edit-icon-container:hover {
+    opacity: 1;
+}
+
+.edit-icon svg {
+    color: #5a3f97;
+}
+
+/* Edit mode styling */
+.editing {
+    background-color: #fafafa !important;
+    box-shadow: inset 0 0 0 2px #5a3f97;
+}
+
+/* Time input styling - fixed alignment */
+.time-edit-input {
+    width: 100%;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    text-align: center;
+    box-sizing: border-box;
+    height: 30px;
+}
+
+/* Edit actions in header */
+.edit-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    gap: 5px;
+}
+
+.edit-action-btn {
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: none;
+    font-size: 0.8rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.edit-action-btn.save-btn {
+    background-color: #5a3f97;
+    color: white;
+}
+
+.edit-action-btn.cancel-btn {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Fix menu type cell and category cell background when editing */
+.menu-type-cell.editing {
+    background-color: #eef4ff !important;
+}
+
+.category-cell.editing {
+    background-color: #fff !important;
+}
+
+.menu-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.menu-actions .cancel-btn, 
+.menu-actions .save-btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.menu-actions .cancel-btn {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.menu-actions .save-btn {
+    background-color: #5a3f97;
+    color: white;
+}
+
+.menu-preview {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* Force horizontal scrolling */
+.menu-table-container {
+    overflow-x: auto;
+    margin-top: 0; /* Removed the top margin to eliminate gap */
+    width: 100%;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #e0e0e0;
+}
+
+/* Ensure table is wide enough to scroll */
+.menu-table {
+    width: 100%;
+    min-width: 1000px;
+    border-collapse: collapse; /* Ensures no gaps between cells */
+    table-layout: fixed; /* Controls column width */
+    margin: 0; /* Remove any default margins */
+}
+
+/* First column width */
+.menu-table th:first-child, 
+.menu-table td:first-child {
+    width: 150px;
+    min-width: 150px;
+    position: sticky;
+    left: 0;
+    background-color: #fff;
+    z-index: 1;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+/* Set width for date columns */
+.menu-table th:not(:first-child), 
+.menu-table td:not(:first-child) {
+    width: 140px;
+    min-width: 140px;
+}
+
+.menu-table th, 
+.menu-table td {
+    border: 1px solid #e0e0e0;
+    padding: 8px;
+    text-align: center;
+    overflow-wrap: break-word;
+    position: relative;
+    margin: 0; /* Remove any cell margins */
+}
+
+.menu-table th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* Day cells formatting */
+.day-name {
+    font-weight: bold;
+}
+
+.day-formatted {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.menu-type-row {
+    background-color: #eef4ff;
+}
+
+/* Fix the gap issue */
+.menu-preview h2 {
+    margin-bottom: 0.5rem;
+}
+
+/* Ensure no gap between scroll indicator and table */
+.scroll-indicator + .menu-table-container {
+    margin-top: 0;
+}
+
+/* Add item button styling */
+.add-item-container {
+    text-align: center;
+    margin-top: 8px;
+    padding-top: 5px;
+    border-top: 1px dashed #e0e0e0;
+}
+
+.add-item-btn {
+    background-color: #5a3f97;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.add-item-btn:hover {
+    background-color: #7b58c7;
+}
+
+/* New item input styling */
+.new-item-container {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    margin-top: 5px;
+    border-top: 1px dashed #e0e0e0;
+}
+
+.new-item-input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.confirm-new-item-btn, 
+.cancel-new-item-btn {
+    width: 22px;
+    height: 22px;
+    border: none;
+    border-radius: 50%;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 3px;
+}
+
+.confirm-new-item-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.cancel-new-item-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Newly added item indication */
+.menu-item-entry.new-item {
+    background-color: #f0f8ff; /* Light blue background */
+    border-left: 3px solid #5a3f97;
+    padding-left: 5px;
+}
+
+/* When in edit mode, ensure the add button is only visible for the edited column */
+td:not(.editing) .add-item-container {
+    display: none;
+}
+
+.menu-table th:first-child, 
+.menu-table td:first-child {
+    width: 150px;
+    min-width: 150px;
+    position: sticky;
+    left: 0;
+    background-color: #fff;
+    z-index: 1;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+/* Remove any existing yellow line that might be in the layout */
+.menu-table tr > td:nth-child(2) {
+    /* This removes any potential previous yellow line */
+    border-left: none !important;
+}
+
+/* Second fix - Adjust scrolling behavior to only show when necessary */
+.menu-table-container {
+    overflow-x: auto;
+    margin-top: 0;
+    width: 100%;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #e0e0e0;
+}
+
+/* Override the minimum width calculations for fewer columns */
+@media (min-width: 768px) {
+    /* For wide screens */
+    .menu-table {
+        width: 100%;
+        /* Remove the fixed min-width and use auto instead */
+        min-width: auto;
+        /* Allow table to take the width of its parent if content is narrow */
+        table-layout: fixed;
+        margin: 0;
+    }
+    
+    /* Hide scroll indicator if few days are displayed */
+    .menu-table.few-days + .scroll-indicator {
+        display: none !important;
+    }
+}
+
+/* Add this new class to be applied dynamically */
+.menu-table.few-days {
+    /* When few days are present, don't force extra width */
+    min-width: auto !important;
+    width: 100% !important;
+}
+
+/* Make sure header sticks properly with the yellow line */
+.menu-table th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* Ensure the first header cell has a higher z-index to appear above other sticky elements */
+.menu-table th:first-child {
+    z-index: 3;
+}

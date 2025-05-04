@@ -1,0 +1,36 @@
+.custom-icon {
+    border-radius: 50%;
+    padding: 5px;
+    --sds-c-icon-color-foreground-default: #5981FF;
+    --sds-c-icon-color-background: #F6F8FB;
+}
+.custom-icon-liked {
+    border-radius: 50%;
+    padding: 5px;
+    --sds-c-icon-color-foreground-default:  #F6F8FB;
+    --sds-c-icon-color-background: #5981FF; 
+}
+.feedbackButton{
+    font-size: 1rem;
+    color: #2a3a4a;
+    border: none;
+    background-color: #e3e5ed;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    margin: 0;
+}
+.required-indicator {
+    color: red;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+/* FeedBack button older style */
+/* background-color:  #D1D4DB;
+border: none;
+color: #373A45;
+border-radius: 8px;
+text-align: center;
+width:90%;
+padding: 6px;
+align-content: center; */

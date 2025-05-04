@@ -1,0 +1,263 @@
+<template>
+    <div class="menu-container">
+        <!-- Loading spinner -->
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading menu data" size="medium"></lightning-spinner>
+        </template>
+
+        <!-- Error message -->
+        <template if:true={error}>
+            <div class="error-message">
+                <p>Error loading menu data. Please try again later.</p>
+            </div>
+        </template>
+
+        <!-- Menu items -->
+        <div class="menu-grid" if:true={isItemsPresent}>
+            <!-- Breakfast -->
+            <div class="menu-section">
+                <div class="section-header">
+                    <div class="title-container">
+                        <h2 class="section-title">Breakfast</h2>
+                    </div>
+                    <div class="slds-grid slds-align-middle">
+                        <div class="slds-col slds-m-right_small">
+                            <c-rate-this-menu 
+                                current-category="Breakfast" 
+                                menu-id={menuId} 
+                                menu-data={menuData}>
+                            </c-rate-this-menu>
+                        </div>
+                        <div class="slds-col">
+                            <div class="time-container">
+                                <p class="section-time">{menuData.Breakfast.startTime} - {menuData.Breakfast.endTime}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="section-divider"></div>
+                <div class="menu-items">
+                    <template for:each={menuData.Breakfast.items} for:item="item">
+                        <div key={item.id} class="menu-item" data-id={item.id}>
+                            <div class="item-container">
+                                <span class="item-dot"></span>
+                                <span class="item-name">{item.name}</span>
+                                <template if:true={item.isJain}>
+                                    <span class="item-tag jain">Jain</span>
+                                </template>
+                                <template if:true={item.isNutrition}>
+                                    <div class="tooltip">
+                                        <div class="tooltip-content">
+                                            <p if:true={item.nutritionInfo.calories}><strong>Calories:</strong>
+                                                {item.nutritionInfo.calories} kcal</p>
+                                            <p if:true={item.nutritionInfo.carbs}><strong>Carbs:</strong>
+                                                {item.nutritionInfo.carbs}g</p>
+                                            <p if:true={item.nutritionInfo.fat}><strong>Fat:</strong>
+                                                {item.nutritionInfo.fat}g</p>
+                                            <p if:true={item.nutritionInfo.protein}><strong>Protein:</strong>
+                                                {item.nutritionInfo.protein}g</p>
+                                            <p if:true={item.nutritionInfo.sugar}><strong>Sugar:</strong>
+                                                {item.nutritionInfo.sugar}g</p>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                <div class="slds-m-left_large slds-m-bottom_small">
+                    <!-- <button class="rating-button" data-mealtype="Breakfast" onclick={handleRateMenu}>
+                        Rate this menu
+                    </button> -->
+                    <!-- <c-rate-this-menu current-category="Breakfast" menu-id={menuId} menu-data={menuData} > </c-rate-this-menu> -->
+                </div>
+            </div>
+
+            <!-- Lunch -->
+            <div class="menu-section">
+                <div class="section-header">
+                    <div class="title-container">
+                        <h2 class="section-title">Lunch</h2>
+                    </div>
+                    <div class="slds-grid slds-align-middle">
+                        <div class="slds-col slds-m-right_small">
+                            <c-rate-this-menu 
+                                current-category="Lunch" 
+                                menu-id={menuId} 
+                                menu-data={menuData}>
+                            </c-rate-this-menu>
+                        </div>
+                        <div class="slds-col">
+                            <div class="time-container">
+                                <p class="section-time">{menuData.Lunch.startTime} - {menuData.Lunch.endTime}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-divider"></div>
+                <div class="menu-items">
+                    <template for:each={menuData.Lunch.items} for:item="item">
+                        <div key={item.id} class="menu-item" data-id={item.id}>
+                            <div class="item-container">
+                                <span class="item-dot"></span>
+                                <span class="item-name">{item.name}</span>
+                                <template if:true={item.isJain}>
+                                    <span class="item-tag jain">Jain</span>
+                                </template>
+                                <template if:true={item.isNutrition}>
+                                    <div class="tooltip">
+                                        <div class="tooltip-content">
+                                            <p if:true={item.nutritionInfo.calories}><strong>Calories:</strong>
+                                                {item.nutritionInfo.calories} kcal</p>
+                                            <p if:true={item.nutritionInfo.carbs}><strong>Carbs:</strong>
+                                                {item.nutritionInfo.carbs}g</p>
+                                            <p if:true={item.nutritionInfo.fat}><strong>Fat:</strong>
+                                                {item.nutritionInfo.fat}g</p>
+                                            <p if:true={item.nutritionInfo.protein}><strong>Protein:</strong>
+                                                {item.nutritionInfo.protein}g</p>
+                                            <p if:true={item.nutritionInfo.sugar}><strong>Sugar:</strong>
+                                                {item.nutritionInfo.sugar}g</p>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                <div class="slds-m-left_large slds-m-bottom_small">
+                    <!-- <button class="rating-button" data-mealtype="Lunch" onclick={handleRateMenu}>
+                        Rate this menu
+                    </button> -->
+                    <!-- <c-rate-this-menu current-category="Lunch" menu-id={menuId} menu-data={menuData} > </c-rate-this-menu> -->
+                </div>
+            </div>
+
+            <!-- Evening Snacks -->
+            <div class="menu-section">
+                <div class="section-header">
+                    <div class="title-container">
+                        <h2 class="section-title">Evening snacks</h2>
+                    </div>
+                    <div class="slds-grid slds-align-middle">
+                        <div class="slds-col slds-m-right_small">
+                            <c-rate-this-menu 
+                                current-category="EveningSnacks" 
+                                menu-id={menuId} 
+                                menu-data={menuData}>
+                            </c-rate-this-menu>
+                        </div>
+                        <div class="slds-col">
+                            <div class="time-container">
+                                <p class="section-time">{menuData.EveningSnacks.startTime} - {menuData.EveningSnacks.endTime}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-divider"></div>
+                <div class="menu-items">
+                    <template for:each={menuData.EveningSnacks.items} for:item="item">
+                        <div key={item.id} class="menu-item" data-id={item.id}>
+                            <div class="item-container">
+                                <span class="item-dot"></span>
+                                <span class="item-name">{item.name}</span>
+                                <template if:true={item.isJain}>
+                                    <span class="item-tag jain">Jain</span>
+                                </template>
+                                <template if:true={item.isNutrition}>
+                                    <div class="tooltip">
+                                        <div class="tooltip-content">
+                                            <p if:true={item.nutritionInfo.calories}><strong>Calories:</strong>
+                                                {item.nutritionInfo.calories} kcal</p>
+                                            <p if:true={item.nutritionInfo.carbs}><strong>Carbs:</strong>
+                                                {item.nutritionInfo.carbs}g</p>
+                                            <p if:true={item.nutritionInfo.fat}><strong>Fat:</strong>
+                                                {item.nutritionInfo.fat}g</p>
+                                            <p if:true={item.nutritionInfo.protein}><strong>Protein:</strong>
+                                                {item.nutritionInfo.protein}g</p>
+                                            <p if:true={item.nutritionInfo.sugar}><strong>Sugar:</strong>
+                                                {item.nutritionInfo.sugar}g</p>
+                                        </div>
+                                    </div>
+                                </template>
+                                
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                <div class="slds-m-left_large slds-m-bottom_small">
+                    <!-- <button class="rating-button" data-mealtype="Evening snacks" onclick={handleRateMenu}>
+                        Rate this menu
+                    </button> -->
+                    <!-- <c-rate-this-menu current-category="EveningSnacks" menu-id={menuId} menu-data={menuData} > </c-rate-this-menu> -->
+                </div>
+            </div>
+
+            <!-- Dinner -->
+            <div class="menu-section">
+                <div class="section-header">
+                    <div class="title-container">
+                        <h2 class="section-title">Dinner</h2>
+                    </div>
+                    <div class="slds-grid slds-align-middle">
+                        <div class="slds-col slds-m-right_small">
+                            <c-rate-this-menu 
+                                current-category="Dinner" 
+                                menu-id={menuId} 
+                                menu-data={menuData}>
+                            </c-rate-this-menu>
+                        </div>
+                        <div class="slds-col">
+                            <div class="time-container">
+                                <p class="section-time">{menuData.Dinner.startTime} - {menuData.Dinner.endTime}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-divider"></div>
+                <div class="menu-items">
+                    <template for:each={menuData.Dinner.items} for:item="item">
+                        <div key={item.id} class="menu-item" data-id={item.id}>
+                            <div class="item-container">
+                                <span class="item-dot"></span>
+                                <span class="item-name">{item.name}</span>
+                                <template if:true={item.isJain}>
+                                    <span class="item-tag jain">Jain</span>
+                                </template>
+                                <template if:true={item.isNutrition}>
+                                    <div class="tooltip">
+                                        <div class="tooltip-content">
+                                            <p if:true={item.nutritionInfo.calories}><strong>Calories:</strong>
+                                                {item.nutritionInfo.calories} kcal</p>
+                                            <p if:true={item.nutritionInfo.carbs}><strong>Carbs:</strong>
+                                                {item.nutritionInfo.carbs}g</p>
+                                            <p if:true={item.nutritionInfo.fat}><strong>Fat:</strong>
+                                                {item.nutritionInfo.fat}g</p>
+                                            <p if:true={item.nutritionInfo.protein}><strong>Protein:</strong>
+                                                {item.nutritionInfo.protein}g</p>
+                                            <p if:true={item.nutritionInfo.sugar}><strong>Sugar:</strong>
+                                                {item.nutritionInfo.sugar}g</p>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                <div class="slds-m-left_large slds-m-bottom_small">
+                    <!-- <button class="rating-button" data-mealtype="Dinner" onclick={handleRateMenu}>
+                        Rate this menu
+                    </button> -->
+                    <!-- <c-rate-this-menu current-category="Dinner" menu-id={menuId} menu-data={menuData} ></c-rate-this-menu> -->
+                </div>
+            </div>
+        </div>
+
+        <div if:false={isItemsPresent}>
+            <div class="no-items-message">
+                <lightning-icon class="info-icon" icon-name="utility:info" size="small"></lightning-icon>
+                No Items Present for the selected date
+            </div>
+        </div>
+    </div>
+</template>

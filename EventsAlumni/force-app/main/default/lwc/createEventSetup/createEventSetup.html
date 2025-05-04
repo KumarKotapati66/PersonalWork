@@ -1,0 +1,50 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 02-03-2024
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+  <div class="bgColor">
+    <div if:true={showSpinner}>
+      <lightning-spinner alternative-text="Loading..." variant="brand" size="medium"></lightning-spinner>
+    </div>
+    <!--<div class="slds-grid slds-wrap evaHeadBox">
+      <div class="slds-col slds-large-size_6-of-12">
+        <div class="evaHeading">Create Event</div>
+      </div>
+    </div>-->
+    <div class="slds-p-around_medium" style="margin-top: 10px">
+      <lightning-progress-indicator current-step={currentStep} type="path" variant="base">
+        <template for:each={steps} for:item="step">
+          <lightning-progress-step label={step.label} value={step.value} key={step.label}></lightning-progress-step>
+
+        </template>
+      </lightning-progress-indicator>
+      <div class="slds-m-top_medium container">
+        <div class="progress-container">
+          <lightning-progress-bar value={progressBarValue} size="large" class="progress-bar"></lightning-progress-bar>
+          <p class="step-label">{currentStepLabel}</p>
+        </div>
+      </div>
+    </div>
+    <div if:true={showEvent}>
+      <c-create-event  is-event-setup={isEventSetup} event-record-id={recordId} onevent={handleEvent}></c-create-event>
+    </div>
+     <div if:true={showTargetAudience}>
+      <c-event-target-audience  event-record-id={recordId} onprevious={handlePrevious} ontargetaudience={handleTargetAudience}></c-event-target-audience>
+    </div>
+    <div if:true={showEventSchedule}>
+      <c-create-event-schedules  event-record-id={recordId} if:true={recordId} onprevious={handlePrevious}
+        oneventschedule={handleEventSchedule}></c-create-event-schedules>
+    </div>
+    <div if:true={showFeeSetup}>
+      <c-event-fee-setup is-event-wise={isEventWise} is-session-wise={isSessionWise} event-record-id={recordId} onprevious={handlePrevious}
+        onfeesetup={handleFeeSetup}></c-event-fee-setup>
+    </div>
+    <div if:true={showSummary}>
+      <c-event-summary event-record-id={recordId} onprevious={handlePrevious}></c-event-summary>
+    </div>
+  </div>
+</template>

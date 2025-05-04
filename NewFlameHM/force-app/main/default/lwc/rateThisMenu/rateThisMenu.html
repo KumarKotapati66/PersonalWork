@@ -1,0 +1,111 @@
+<template>
+    <button  class="feedbackButton slds-m-top_small" onclick={handleRateThisMenu}>
+        Rate This Menu 
+    </button>
+    <template if:true={isModalOpen}>
+        <section role="dialog" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium slds-text-align_left">{currentCategory} menu</h2>
+                    <button class="slds-button slds-button_icon slds-modal__close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="Close"></lightning-icon>
+                    </button>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <template lwc:if={dynamicList.length} for:each={dynamicList} for:item="questionnaire">
+                        <div key={questionnaire.label}>
+                            <div  class="slds-m-bottom_x-small">
+                                <p>
+                                    {questionnaire.label}
+                                    <span class="required-indicator" if:true={questionnaire.required}>*</span>
+                                </p>
+                            </div>
+                            <ol class="slds-list_ordered">
+                                <div class="slds-grid slds-m-top_xx-small">
+                                    <template for:each={questionnaire.menuItems} for:item="itemList">
+                                        <div key={itemList} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                                            <template for:each={itemList} for:item="item">
+                                                <li key={item}>
+                                                    <div class="slds-grid slds-grid_vertical-align-center slds-p-around_medium">
+                                                        <div class="slds-col slds-size_1-of-2 slds-text-body_regular slds-m-right_large">
+                                                            <span>{item.name}</span>
+                                                        </div>
+                                                        <div class="slds-col slds-size_1-of-4">
+                                                            <lightning-icon 
+                                                                data-item={item.name}
+                                                                data-questionnaireid={questionnaire.Id} 
+                                                                icon-name="utility:like"
+                                                                class={item.IsLiked}
+                                                                size="small"
+                                                                onclick={handleThumbsUp}>
+                                                            </lightning-icon>
+                                                            <span class="slds-assistive-text">Like</span>
+                                                        </div>
+                                                        <div class="slds-col slds-size_1-of-4">
+                                                            <lightning-icon 
+                                                                data-item={item.name}
+                                                                data-questionnaireid={questionnaire.Id} 
+                                                                icon-name="utility:dislike" 
+                                                                size="small" 
+                                                                class={item.IsDisLiked}
+                                                                onclick={handleThumbsDown}>
+                                                            </lightning-icon>
+                                                            <span class="slds-assistive-text">Dislike</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </template>  
+                                        </div>
+                                    </template>
+                                </div>
+                            </ol>
+                        </div>
+                    </template> 
+                    <template lwc:if={ratingList.length} for:each={ratingList} for:item="questionnaire">
+                        <div key={questionnaire.label}>
+                            <label for="starRating">
+                                {questionnaire.label}
+                                <span class="required-indicator" if:true={questionnaire.required}>*</span>
+                            </label>
+                            <div class="slds-grid slds-grid_vertical-align-center">
+                                <template for:each={stars} for:item="star">
+                                    <lightning-button-icon
+                                        key={star}
+                                        data-questionnaireid={questionnaire.Id}
+                                        icon-name={star.iconName}
+                                        alternative-text="Star"
+                                        onclick={handleStarClick}
+                                        data-index={star.index}
+                                        class="slds-m-right_xx-small"
+                                        size="large"
+                                        variant="bare">
+                                    </lightning-button-icon>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                    <template lwc:if={shortAnswerList.length} for:each={shortAnswerList} for:item="questionnaire">
+                        <div key={questionnaire.label} class="slds-m-top_small">
+                            <label class="slds-m-bottom_none" for="feedback">
+                                {questionnaire.label}
+                                <span class="required-indicator" if:true={questionnaire.required}>*</span>
+                            </label>
+                            <lightning-textarea  class="slds-m-top_none" 
+                                value={feedback}
+                                data-questionnaireid={questionnaire.Id} 
+                                placeholder="your feedback makes us better!" 
+                                onchange={handleFeedback}>
+                            </lightning-textarea>
+                        </div>
+                    </template>
+                </div>
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModal}>Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={submitFeedback}>Submit</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    
+</template>

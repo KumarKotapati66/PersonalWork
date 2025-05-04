@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Week__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(
+    TEXT(MONTH(Start_Date__c)),
+    &quot;1&quot;, &quot;Jan&quot;,
+    &quot;2&quot;, &quot;Feb&quot;,
+    &quot;3&quot;, &quot;Mar&quot;,
+    &quot;4&quot;, &quot;Apr&quot;,
+    &quot;5&quot;, &quot;May&quot;,
+    &quot;6&quot;, &quot;Jun&quot;,
+    &quot;7&quot;, &quot;Jul&quot;,
+    &quot;8&quot;, &quot;Aug&quot;,
+    &quot;9&quot;, &quot;Sep&quot;,
+    &quot;10&quot;, &quot;Oct&quot;,
+    &quot;11&quot;, &quot;Nov&quot;,
+    &quot;12&quot;, &quot;Dec&quot;,
+    &quot;&quot;
+) &amp; &quot; &quot; &amp; 
+TEXT(YEAR(Start_Date__c)) &amp; 
+&quot; Week &quot; &amp; 
+TEXT(CEILING((DAY(Start_Date__c) + WEEKDAY(DATE(YEAR(Start_Date__c), MONTH(Start_Date__c), 1)) - 1) / 7))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Week</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

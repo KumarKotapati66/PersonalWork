@@ -1,0 +1,84 @@
+<!-- weeklyMenu.html -->
+<template>
+    <div class="mess-menu-wrapper slds-p-around_small">
+        <!-- <div class="menu-header">
+             
+            <h2>Weekly Mess Menu</h2>
+            <lightning-button-icon icon-name="utility:refresh" variant="border-filled" alternative-text="Refresh"
+                title="Refresh" onclick={refreshData} class="refresh-button"></lightning-button-icon>
+        </div> -->
+
+        <div class="menu-table">
+            <!-- Header row with days -->
+            <div class="header-row">
+                <div class="meal-cell"></div>
+                <template for:each={weekDays} for:item="day">
+                    <div key={day.fullDate} class="day-cell">
+                        <div class="day-name">{day.dayName} ({day.shortDay})</div>
+                        <div class="day-date">{day.date} {day.month}</div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Dynamically generated meal rows for each meal type -->
+            <template for:each={mealTypes} for:item="mealType">
+                <div key={mealType.type} class="meal-row">
+                    <div class="meal-cell">
+                        <div class="meal-name">{mealType.label}</div>
+                        <div class="meal-time">
+                            <template if:true={mealType.startTime}>
+                                {mealType.startTime}
+                                <template if:true={mealType.endTime}>
+                                    - {mealType.endTime}
+                                </template>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Menu items for each day -->
+                    <template for:each={weekDays} for:item="day">
+                        <div key={day.fullDate} class="menu-cell" data-day={day.fullDate}
+                            data-meal-type={mealType.type}>
+                            <div class="menu-items">
+                                <!-- Meal section for displaying up to 4 items -->
+                                <div class="meal-section" data-day={day.fullDate} data-meal-type={mealType.type}>
+                                    <!-- Display items will be populated via JS controller -->
+                                </div>
+
+                                <!-- Info icon for showing all items - hidden by default -->
+                                <div class="info-icon hidden" data-cell-id={day.fullDate} data-meal-type={mealType.type}
+                                    onclick={handleInfoClick}>
+                                    <lightning-icon icon-name="utility:info" size="x-small"
+                                        alternative-text="See all items"></lightning-icon>
+                                </div>
+
+                                <!-- Tooltip for showing all items -->
+                                <div class="tooltip-content hidden" data-cell-id={day.fullDate}
+                                    data-meal-type={mealType.type}>
+                                    <div class="tooltip-header">All Items</div>
+                                    <div class="tooltip-items">
+                                        <!-- Items will be populated via JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </div>
+
+        <!-- Loading spinner -->
+        <template if:true={isLoading}>
+            <div class="loading-spinner">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <!-- Add a debugging section if needed -->
+        <template if:true={isDebugging}>
+            <div class="debug-section">
+                <div>Data received: {dataCount} items</div>
+            </div>
+        </template>
+    </div>
+</template>

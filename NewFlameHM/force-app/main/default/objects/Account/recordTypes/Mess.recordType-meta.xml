@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mess</fullName>
+    <active>true</active>
+    <label>Mess</label>
+    <picklistValues>
+        <picklist>AccountSource</picklist>
+        <values>
+            <fullName>3dot14</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Advertisement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B Design leads</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CDL-Bootcamp-01-%28July 1-10%2C2023%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CDL-Program-02-%28July 1- Aug 31%2C2023%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Career Fair</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Career Launcher</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Career360%2Ecom</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Careers360</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collegedunia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collegeduniya API</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Common Landing Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DU College</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E3 Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ekoching</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Employee Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>External Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FLAME FUSIP Responses</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FLAME Website - Admission Enquiry</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FLAME Website - Other Enquiry</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FormsKart</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GetMyUni</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HSM - Summer Immersion leads</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IMS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IMS MBA Manthan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAT 2021</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MBA Aspirants%2C</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MBA2020 - Quora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MBACM2020 - Quora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MIRANDA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maitreyi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monster%2Ecom</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NMAT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NMAT Webinar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PG Open Day</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PG-CollegeDunia-Landing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PG-FB-Landing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PG-Google-Landing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PG-MBACM-FB-LEADS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PG-PagalGuy-Landing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PG-Shiksha-Landing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PGB-InsideIIM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PGB-LinkedIn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PGB2020 - Inshorts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PGC - FB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PGC - Google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PGC-LinkedIn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PGPEI - 2020 Innovation Challenge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PGPEI - 2020 Innovation Challenge - Registration Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PGPEI - Amura - FBLeadAds</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PGPEI - Collegeduniya API</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PGPEI - Esquared - google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PGPEI - Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PGPEI - GladOwl</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PGPEI - Google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PGPEI - Shiksha API</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PGPEI-Amura</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PaGaLGuY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PaGaLGuY API</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre-Registration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public Relations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SIP - Landing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SIP2020 - FB Landing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SIP2020 - Google Landing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seminar - Internal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seminar - Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seminar Leads</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shiksha API</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shiksha%2Ecom</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SimCAT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TIME</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Test</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Testopodia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Top Uni</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trade Show</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UG%28B%2EDes%29-GOOGLE-Landing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UG%28B%2EDes%29-Shiksha-Landing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UG-FB-Landing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UG-Google-Landing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UG-HSM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UG-Quora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UG2020 - LinkedIn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Visiting Card</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Webform for PGPEI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website %7C Admission Enquiry</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website %7C Campus Tour</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website %7C FSS %28Brochure Download%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website %7C FUSIP %28Brochure Download%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website %7C Invite to your School</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website %7C MBA %28Brochure Download%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website %7C MBACM %28Brochure Download%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website %7C Newsletter Subscription</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website %7C PG %28Meet Us Online%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website %7C PGPEI %28Brochure Download%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website %7C UG %28Brochure Download%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website %7C UG %28Meet Us Online%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website %7C UG Virtual Open Day</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website %7C UG Virtual Open Day %28B%2EDes%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website %7C UG-B%2EDes %28Brochure Download%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Word of mouth</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Industry</picklist>
+        <values>
+            <fullName>Agriculture</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Apparel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Biotechnology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chemicals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Communications</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Construction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Education</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electronics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Energy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Engineering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Entertainment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Environmental</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Food %26 Beverage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Government</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hospitality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Machinery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manufacturing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Media</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not For Profit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recreation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shipping</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Telecommunications</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transportation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Utilities</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ownership</picklist>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Private</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Subsidiary</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Rating</picklist>
+        <values>
+            <fullName>Cold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hot</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warm</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Analyst</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Client</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Integrator</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Investor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Press</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reseller</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,331 @@
+<template>
+    <div if:true={showSpinner} class="slds-is-relative">
+        <lightning-spinner alternative-text="Loading..." variant="brand" size="medium"></lightning-spinner>
+    </div>
+    <!--<div>
+        <c-event-date-path start-date="09/09/2024" end-date ="10/09/2024"></c-event-date-path>
+    </div>-->
+
+    <!-- Schedule Setup Section -->
+    <template if:true={eventRecordId}>
+        <div class="date-path">
+            <!-- Loop through each date in the datePath array -->
+            <template if:true={datePath} for:each={datePath} for:item="item">
+                <lightning-button 
+                key={item.date} 
+                class="slds-m-left_x-small"
+			    variant={item.variant}
+				label={item.date} 
+                data-date={item.date} 
+                onclick={handleDateClick}>
+                </lightning-button>
+            </template>
+        </div>
+        <!--<div style="float: right">
+            <lightning-button class="slds-p-around_xx-small" name="addrow" label="Add Sessions +"
+                onclick={handleAddRow}></lightning-button>
+        </div>-->
+
+        <template for:each={eventScheduleRecords} for:item="eachEventSchedule" for:index="index">
+            <div class="slds-p-around_small" key={eachEventSchedule.index}>
+                <!-- Session Details -->
+
+                <div class="custom-container">
+                    <strong>Session details</strong>
+                    <!-- Session Form Elements -->
+                    <template if:true={eachEventSchedule}>
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+                                <lightning-input label="Session title*" name="name" data-id={index}
+                                    onchange={handleInputChange} value={eachEventSchedule.name}></lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+                                <lightning-input label="Select start time*" type="time" name="startTime" data-id={index}
+                                    onchange={handleInputChange} value={eachEventSchedule.startTime}></lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+                                <lightning-input label="Select end time*" type="time" name="endTime" data-id={index}
+                                    onchange={handleInputChange} value={eachEventSchedule.endTime}></lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+                                <lightning-input label="Agenda" data-id={index} name="agenda"
+                                    onchange={handleInputChange} value={eachEventSchedule.agenda}></lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+                                <label>
+                                   Upload brochure for the session (optional)
+                                 </label><br>
+                                 
+                                <!--<lightning-input label="Upload brochure for the session (optional)" type="file"
+                                    data-id={index} onchange={handleInputChange}
+                                    value={eachEventSchedule.sessionBroucher}></lightning-input>-->
+                                 <!-- File input: Visible only when no image is selected -->
+                                    <template if:false={eachEventSchedule.sessionBroucher}>
+                                        <lightning-button  data-type="session" label="Upload Brochure for the session" data-id={index} onclick={openFileDialog} icon-name="utility:upload" icon-position="right">
+                                        </lightning-button>
+                                        <input type="file" accept="image/*" data-type="session" data-id={index} style="display:none;" onchange={handleFileChange} />
+                                    </template>
+
+                                    <!-- Display image preview if selected -->
+                                    <template if:true={eachEventSchedule.sessionBroucher}>
+                                        <div class  ="image-preview">
+                                            <img src={eachEventSchedule.sessionBroucher} data-type="session" data-id={index} alt="Selected Image" class="slds-image" /><br/>
+                                            <lightning-button variant="destructive" data-type="session" data-id={index} label="Remove" onclick={removeImage}>
+                                            </lightning-button>
+                                        </div>
+                                    </template>    
+                            </div>
+                        </div>
+                    </template>
+                    <!-- Speaker Details Section -->
+                    
+                    <div class="custom-container">
+                        <strong>Speaker details</strong>    
+                        <template for:each={eachEventSchedule.speakers} for:item="speaker" for:index="speakerIndex">
+                            <template if:true={speaker}>
+                                <div key={speaker.speakerIndex} class="slds-p-around_small">
+                                    <div class="slds-grid slds-wrap">
+                                        <!-- First Row: Contact Combobox and Description Field -->
+                                        <div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+                                           <!-- <lightning-combobox label="Speaker" placeholder="Search by name..." 
+                                                options={contactOptions} 
+                                                onchange={handleSpeakerInputChange} 
+                                                data-id={index} name="contactId" 
+                                                value={speaker.contactId} 
+                                                data-speaker-index={speakerIndex}
+                                                oninput={handleSearchChange}>
+                                            </lightning-combobox>-->
+                                            
+                                                <lightning-record-picker
+                                                    label="Speaker"
+                                                    placeholder="Search..."
+                                                    object-api-name="Contact"
+                                                    value={speaker.contactId}
+                                                    data-id={index}
+                                                    data-speaker-index={speakerIndex}   
+                                                    name="contactId"
+                                                    onchange={handleSpeakerInputChange}
+                                                    size="large"
+                                                    icon-name="standard:contact"
+                                                    >
+                                                </lightning-record-picker>
+                                                <div class="slds-m-top_medium">
+                                                <lightning-button label="Create New Speaker" 
+                                                 data-id={index}
+                                                 data-speaker-index={speakerIndex}
+                                                onclick={handleCreateNew}></lightning-button>
+                                              </div>
+                                            <!--<c-custom-contact-lookup 
+                                            oncontactselected={handleContactSelected}
+                                            data-id={index} 
+                                            name="contactId"
+                                            contact-id={speaker.contactId}
+                                            data-speaker-index={speakerIndex}  
+                                            oncreatenew={handleCreateNew}>
+                                           </c-custom-contact-lookup>-->
+                                        </div>
+                            
+                                        <div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+                                            <lightning-input label="Description about the speaker" 
+                                                name="description" 
+                                                data-id={index} 
+                                                data-speaker-index={speakerIndex}
+                                                onchange={handleSpeakerInputChange} 
+                                                placeholder="Help audience get to know the speaker"
+                                                value={speaker.description}>
+                                            </lightning-input>
+                                        </div>
+                                    
+                            
+                                    <!-- Second Row: Image Upload and Remove Button -->
+                                    <!--<div class="slds-grid slds-gutters">-->
+                                        <div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+                                           <!-- <lightning-file-upload label="Image of the speaker (Optional)" 
+                                                name="fileUploader" 
+                                                accept={acceptedFormats} 
+                                                
+                                                onchange={handleSpeakerFileUpload}>
+                                            </lightning-file-upload>-->
+                                            <!-- File input: Visible only when no image is selected -->
+                                             <label>
+                                                Image of the speaker (optional)
+                                             </label><br>
+                                            <template if:false={speaker.speakerImage}>
+                                                <lightning-button  data-type="speaker" label="Upload image for the speaker" data-speaker-index={speakerIndex} data-id={index} onclick={openFileDialog} icon-name="utility:upload" icon-position="right">
+                                                </lightning-button>
+                                                <input type="file" accept="image/*" data-type="speaker" style="display:none;" data-speaker-index={speakerIndex} data-id={index} onchange={handleFileChange} />
+                                            </template>
+
+                                            <!-- Display image preview if selected -->
+                                            <template if:true={speaker.speakerImage}>
+                                                <div class  ="image-preview">
+                                                    <img src={speaker.speakerImage} data-type="speaker" data-speaker-index={speakerIndex} data-id={eachEventSchedule.index} alt="Selected Image" class="slds-image" /><br/>
+                                                    <lightning-button variant="destructive" data-type="speaker" data-speaker-index={speakerIndex} data-id={eachEventSchedule.index} label="Remove" onclick={removeImage}>
+                                                    </lightning-button>
+                                                </div>
+                                            </template>  
+                                        </div>
+                            
+                                        <div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+                                            <lightning-button class="removeSpeaker"
+                                                variant="destructive" 
+                                                label="Remove Speaker" 
+                                                data-id={index} 
+                                                data-speaker-index={speakerIndex}
+                                                onclick={handleRemoveSpeaker}
+                                                icon-name="utility:delete" icon-position="right">
+                                            </lightning-button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+                        <lightning-button variant="Brand" label="+ Add Speaker" data-id={index}
+                            data-speaker-index={speakerIndex} onclick={handleAddSpeaker}></lightning-button>
+                    </div>
+                      <!---Location details-->
+                 <div>
+                    <!-- Select location type -->
+                    <div class="custom-container">
+                    <div>
+                        <p><strong>Location Details</strong></p><br>
+                        <p>Select location type</p><br>
+                    </div>
+                    <div class="loaction-radio-group">
+                       
+                        <div class="location-radio-field">
+                            
+                            <input type="radio" 
+                                    name={index}
+                                    data-id={index} 
+                                    value="Online event" 
+                                    checked= {eachEventSchedule.isOnlineEvent}
+                                    onclick={hanldeLocationTypeSelection} />
+                                <label>
+                                    Online event
+                                </label>    
+                        </div>
+                         <div class="location-radio-field">
+                            
+                            <input type="radio" 
+                                    name={index} 
+                                    data-id={index} 
+                                    value="On-site"
+                                    checked={eachEventSchedule.isOnSite}
+                                    onclick={hanldeLocationTypeSelection} />
+                                    <label>
+                                        On-site
+                                    </label>
+                         </div>
+                         <div class="location-radio-field">
+                            
+                            <input type="radio" 
+                                    name={index} 
+                                    data-id={index} 
+                                    value="Hybrid"
+                                    checked={eachEventSchedule.isHybrid}
+                                    onclick={hanldeLocationTypeSelection} />
+                                    <label>
+                                        Hybrid
+                                    </label>
+                         </div>
+                       
+                    </div>
+                    
+                    <!-- Address input field -->
+                     <div class="slds-grid slds-glutters">
+                          
+                            <div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+                                <template if:false={eachEventSchedule.isOnlineEvent}>
+                                <lightning-input label=" "
+                                    placeholder="Enter address to the session venue" name ="locationAddress" data-id={index} value={eachEventSchedule.locationAddress}
+                                    onchange={hanldeLocationtextFields}>
+                                </lightning-input>
+                                </template>
+                                <template if:true={eachEventSchedule.isOnlineEvent}>
+                                <lightning-input label=" " placeholder="The link will auto-generate" name = "sessionLink" data-id={index} value={eachEventSchedule.sessionLink}
+                                     onchange={hanldeLocationtextFields}>
+                                </lightning-input>
+                                </template>
+                            </div>
+
+                        <!-- Auto-generated link -->
+                            <div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+                                <template if:false={eachEventSchedule.isOnlineEvent}>
+                                <lightning-input label=" " placeholder="The link will auto-generate" name = "sessionLink" data-id={index} value={eachEventSchedule.sessionLink}
+                                     onchange={hanldeLocationtextFields}>
+                                </lightning-input>
+                                </template>
+                            </div>
+                     </div>
+                     </div>
+                 </div>
+                </div>
+          
+            </div>
+        </template>
+        <div style="float: left">
+            <lightning-button variant="brand" class="slds-p-around_xx-small" name="addrow" label="Add Sessions +"
+                onclick={handleAddRow}></lightning-button>
+        </div>
+        <!--Open Fee section modal-->
+        <template if:true={openFeeSelection}>
+
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <div class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    
+                    
+                    <div class="slds-modal__body">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close"
+                            size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                        <div class="slds-modal__header">
+                            <h2 class="slds-text-heading_medium">How would you like to proceed?</h2>
+                        </div>
+                        <div class="radio-group">
+                            <div class="radio-field">
+                                <label>
+                                    Session-wise pricing for the event
+                                </label>
+                                <input type="radio" name="pricingOption" value="session" checked={isSessionPricing}
+                                    onclick={handleSessionFee} />
+                            </div>
+                             <div class="radio-field">
+                                <label>
+                                    Overall pricing for the entire event
+                                </label>
+                                <input type="radio" name="pricingOption" value="overall" checked={isEventPricing}
+                                        onclick={handleEventFee} />
+                             </div>
+                        </div>
+                    </div>
+                    <!--<div class="slds-modal__footer">
+                        <lightning-button variant="neutral" label="Cancel" onclick={closeModal}></lightning-button>
+                        <lightning-button variant="brand" label="Confirm" onclick={confirmSelection}></lightning-button>
+                    </div>-->
+                </div>
+            </div>
+
+        </template>
+        <br><div class="custom-flex-container">
+            <div class="custom-flex-left" style="float: left">
+                <lightning-button class="slds-p-around_xx-small" name="previous" label="Previous"
+                    onclick={handlePrevious}></lightning-button>
+            </div>
+            <div class="custom-flex">
+                <div class="slds-p-around_xx-small">
+                    <lightning-button name="cancel" label="Cancel" onclick={handleCancel}></lightning-button>
+                </div>
+                <div class="slds-p-around_xx-small">
+                    <lightning-button class="slds-p-around_xx-small" variant="brand" name="save"
+                        label="Save and proceed" onclick={handleSave}></lightning-button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+</template>

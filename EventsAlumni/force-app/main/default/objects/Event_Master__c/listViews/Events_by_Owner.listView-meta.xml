@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Events_by_Owner</fullName>
+    <columns>NAME</columns>
+    <columns>Event_Status__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Event_Fee__c</columns>
+    <filterScope>Mine</filterScope>
+    <label>Events by Owner</label>
+</ListView>

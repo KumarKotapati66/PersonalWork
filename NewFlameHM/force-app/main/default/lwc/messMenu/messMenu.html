@@ -1,0 +1,160 @@
+<template>
+    <div class="slds-p-around_medium">
+        <!-- Input Form Section -->
+        <div class="slds-grid slds-gutters">
+
+            <div class="slds-col slds-size_2-of-12">
+                <lightning-combobox label="Select Mess" value={selectedMessId} options={messOptions}
+                    onchange={handleMessChange} required>
+                </lightning-combobox>
+            </div>
+
+            <div class="slds-col slds-size_2-of-12">
+                <lightning-combobox label="Select Menu" value={selectedMenuId} options={menuOptions}
+                    onchange={handleMenuChange} required>
+                </lightning-combobox>
+            </div>
+            <div class="slds-col slds-size_2-of-12">
+                <lightning-input type="date" label="Start Date" data-field="startDate" value={startDate}
+                    onchange={handleDateChange} required>
+                </lightning-input>
+            </div>
+            <div class="slds-col slds-size_2-of-12">
+                <lightning-input type="date" label="End Date" data-field="endDate" value={endDate}
+                    onchange={handleDateChange} required>
+                </lightning-input>
+            </div>
+            <div class="slds-col slds-size_2-of-12 slds-m-top_large">
+                <lightning-button label="Preview Menu" variant="brand" onclick={handlePreviewMenu}
+                    disabled={isFormInvalid}>
+                </lightning-button>
+            </div>
+
+            <template lwc:if={showMessAdminButtons}>
+                <div class="slds-col slds-size_1-of-12 slds-m-top_large">
+                    <lightning-button label="Approve" variant="brand" onclick={openModal} data-action="Approved">
+                    </lightning-button>
+                </div>
+
+                <div class="slds-col slds-size_1-of-12 slds-m-top_large">
+                    <lightning-button label="Reject" variant="destructive" onclick={openModal} data-action="Rejected">
+                    </lightning-button>
+                </div>
+
+            </template>
+
+        </div>
+
+        <!--To display Modal-->
+        <template if:true={isModalOpen}>
+            <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+                class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+
+                    <!-- Modal Header -->
+                    <header class="slds-modal__header">
+                        <h2 class="slds-text-heading_medium">{modalTitle}</h2>
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="Close"
+                                size="small"></lightning-icon>
+                        </button>
+                    </header>
+
+                    <!-- Modal Body -->
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <lightning-textarea label="Enter your comments" value={comment} onchange={handleCommentChange}
+                            placeholder="Enter your reason here..."></lightning-textarea>
+                    </div>
+
+                    <!-- Modal Footer -->
+                    <footer class="slds-modal__footer">
+                        <lightning-button label="Cancel" onclick={closeModal} variant="neutral"></lightning-button>
+                        <lightning-button label="Save" onclick={saveComment} variant="brand"
+                            class="slds-m-left_small"></lightning-button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+
+        <!-- Show error message if dates are invalid -->
+        <div if:true={showDateError} class="slds-text-color_error slds-p-top_x-small">
+            Start Date must be less than or equal to End Date
+        </div>
+
+        <!-- Loading Spinner -->
+        <div if:true={loading} class="slds-is-relative slds-p-around_medium">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+
+        <!-- Menu Preview Table - only shown after clicking Preview Menu -->
+        <div if:true={showPreview} class="menu-preview slds-p-top_medium">
+            <h2 class="slds-text-heading_medium">Menu Preview</h2>
+
+            <!-- Scroll indicator with icons - removed the div that was causing the gap -->
+            <div class="scroll-indicator">
+                <span>Scroll horizontally to view more days</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+
+            <div class="menu-table-container">
+                <table class="menu-table">
+                    <thead>
+                        <tr>
+                            <th class="menu-label-col"></th>
+                            <template for:each={displayedDays} for:item="day">
+                                <th key={day.formattedDate} class="day-col">
+                                    <!-- Added separate divs with specific classes for selection -->
+                                    <div class="day-name">{day.dayOfWeek}</div>
+                                    <div class="day-formatted">{day.formattedDayMonth}</div>
+                                    <!-- Edit icons will be added dynamically here -->
+                                </th>
+                            </template>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <!-- Loop through each menu type in the specified order -->
+                        <template for:each={orderedMenuTypes} for:item="menuType">
+                            <tr key={menuType} class="menu-type-row">
+                                <td class="menu-type-cell">{menuType}</td>
+
+                                <template for:each={displayedDays} for:item="day">
+                                    <td key={day.formattedDate} class="time-cell" data-menutype={menuType}
+                                        data-day={day.dayOfWeek} data-formattedday={day.formattedDayMonth}>
+                                    </td>
+                                </template>
+                            </tr>
+
+                            <!-- Loop through each category (Cereal, Milk, etc.) for this menu type -->
+                            <template for:each={categories} for:item="category">
+                                <tr key={category} class="menu-item-row">
+                                    <td class="category-cell">{category}</td>
+
+                                    <template for:each={displayedDays} for:item="day">
+                                        <td key={day.formattedDate} class="item-cell" data-menutype={menuType}
+                                            data-day={day.dayOfWeek} data-formattedday={day.formattedDayMonth}
+                                            data-category={category}>
+                                            <!-- Items will be populated here by JS -->
+                                        </td>
+                                    </template>
+                                </tr>
+                            </template>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="menu-actions slds-p-top_medium">
+                <lightning-button label="Cancel" variant="neutral" class="slds-m-right_small" onclick={handleCancel}>
+                </lightning-button>
+                <lightning-button label="Save Menu" variant="brand" onclick={handleSaveMenu}>
+                </lightning-button>
+            </div>
+        </div>
+    </div>
+</template>

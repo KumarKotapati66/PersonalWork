@@ -1,0 +1,42 @@
+<template>
+    <lightning-card title="Share your feedback">
+        
+        <div class="slds-p-around_small">
+            <lightning-combobox label="Select Mess" name="--None--" placeholder="SelectMess" value={selectedMessRecord}
+                onchange={handleChangeSelectedMess} options={messOptions}>
+            </lightning-combobox>
+        </div>
+        <div lwc:if={isLoading}>
+            <lightning-spinner alternative-text="Loading" size="medium" variant='brand'></lightning-spinner>
+        </div>
+
+        <template lwc:if={selectedMessRecord}>
+            <template for:each={questionnaires} for:item="questionnaire">
+                <div key={questionnaire.Id}>
+                    <p  class="slds-p-horizontal_small">{questionnaire.label}</p>
+            
+                    <div class="slds-grid slds-gutters slds-p-around_medium">
+                        <template for:each={questionnaire.emojis} for:item="emoji">
+                            <div key={emoji.value} class="slds-col">
+                                <button class={emoji.variant}
+                                    title={emoji.label} 
+                                    onclick={handleSelection} 
+                                    data-value={emoji.value}
+                                    data-questionnaireid={questionnaire.Id}
+                                    >
+                                    <span>{emoji.icon}</span>
+                                </button>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+               
+            </template>
+            
+            <div lwc:if={questionnaires} class="slds-p-around_medium slds-align_absolute-center">
+                <lightning-button label="Submit feedback" variant="brand" onclick={handleSubmit}></lightning-button>
+            </div>
+        </template>
+        
+    </lightning-card>
+</template>
