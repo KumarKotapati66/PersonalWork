@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Menu_Date_Check</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF( Menu_Id__r.RecordType.Name  = &quot;Single Day&quot;, 
+    OR(
+        ISNULL(Menu_Id__r.Date__c),
+        NOT(
+            AND(
+                Menu_Id__r.Date__c &gt;= Start_Date__c,
+                Menu_Id__r.Date__c &lt;= End_Date__c
+            )
+        )
+    ),
+    FALSE
+)</errorConditionFormula>
+    <errorDisplayField>End_Date__c</errorDisplayField>
+    <errorMessage>Please Check Menu Date and Menu Mapping Dates</errorMessage>
+</ValidationRule>

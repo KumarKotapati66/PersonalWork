@@ -1,0 +1,60 @@
+:host {
+    /* Removes SF Card Header padding/margin top/bottom only */
+    --slds-c-card-header-spacing-block-end: 0px;
+    --slds-c-card-header-spacing-block-start: 0px;
+    --slds-c-accordion-summary-color-background: #efeeee;
+}
+
+.checkbox-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.checkbox-item {
+    margin-right: 1.5rem;
+    min-width: fit-content;
+    flex: 0 0 auto;
+}
+
+/* Ensure the checkbox style is consistent */
+.checkbox-item lightning-input {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* Makes heading stand out better */
+h2 {
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: rgb(62, 62, 60);
+    margin-bottom: 0.75rem;
+}
+
+/* Style for meal type sections */
+.meal-type-sections {
+    margin-top: 1.5rem;
+}
+
+/* Style for each meal type heading */
+.meal-type-sections h3 {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: rgb(62, 62, 60);
+    margin-bottom: 0.25rem;
+}
+
+/* Style for JSON output */
+pre {
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-break: break-all;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    background-color: #f3f3f3;
+    border-radius: 4px;
+}

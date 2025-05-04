@@ -1,0 +1,80 @@
+<template>
+     <lightning-card>
+        <div lwc:if={isLoading}>
+            <lightning-spinner alternative-text="Loading" size="medium" variant='brand'></lightning-spinner>
+        </div>
+        <div class="slds-m-around_medium">
+            <!-- Header -->
+            <div class="slds-grid slds-grid_vertical-align-center slds-m-bottom_large">
+                <!-- Left: Menu Type Title -->
+                <div class="slds-col slds-size_5-of-12">
+                    <h1 class="slds-text-heading_medium">{menuType}</h1>
+                    <div class="slds-m-right_small slds-m-bottom_small">
+                        <lightning-combobox name="SelectMess" placeholder="SelectMess" value={selectedMessRecord}
+                            onchange={handleChangeSelectedMess} options={messOptions}>
+                        </lightning-combobox>
+                    </div>
+                </div>
+
+                <!-- Right: Date Selector and Buttons -->
+                <div class="slds-col slds-size_7-of-12">
+                    <div class="slds-grid slds-grid_align-end slds-grid_vertical-align-center">
+                        <!-- <div class="slds-m-right_small slds-m-bottom_small">
+                            <lightning-combobox name="SelectMess" placeholder="SelectMess" value={selectedMessRecord}
+                                onchange={handleChangeSelectedMess} options={messOptions}>
+                            </lightning-combobox>
+                        </div> -->
+
+                        <div class="slds-m-right_small slds-m-bottom_small">
+                            <lightning-input type="date" style="width: 125px;" onchange={handleDateChange}
+                                value={dateValue}></lightning-input>
+                        </div>
+
+                        <!-- Week Range for Weekly Menu -->
+                        <template if:true={isWeeklyMenu}>
+
+                            <!-- <lightning-icon  icon-name="utility:chevronleft" size="small" alternative-text="Previous Week"></lightning-icon> -->
+                            <!-- Display the week range -->
+                            <div class="slds-grid slds-grid_align-center slds-grid_vertical-align-center">
+                                <div class="slds-m-right_small">
+                                    <span>{menuPeriod}</span>
+                                </div>
+                            </div>
+                            <!-- <lightning-icon  icon-name="utility:chevronright" size="small" alternative-text="Next Week"></lightning-icon> -->
+
+                        </template>
+
+                        <!-- Day/Week Button Group -->
+                        <div>
+                            <div class="slds-button-group" role="group">
+                                <button class="slds-button slds-button_neutral" onclick={showDailyMenu}
+                                    title="Show Daily Menu">
+                                    Day
+                                </button>
+                                <button class="slds-button slds-button_neutral" onclick={showWeeklyMenu}
+                                    title="Show Weekly Menu">
+                                    Week
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Section -->
+            <template lwc:if={isDailyMenu}>
+                <!--<c-daily-menu selected-date={dateValue} mess-record-id={selectedMessRecord}></c-daily-menu>-->
+                <c-daily-menu-viewer selected-date={dateValue} mess-id={selectedMessRecord}></c-daily-menu-viewer>
+            </template>
+            <template lwc:if={isWeeklyMenu}>
+                <!--<c-week-menu selected-week={selectedWeek} selected-date={dateValue}
+                    mess-record-id={selectedMessRecord}></c-week-menu>-->
+
+                <c-weekly-menu-viewer-student-portal selected-date={dateValue} mess-id={selectedMessRecord}></c-weekly-menu-viewer-student-portal>
+            </template>
+        </div>
+        <!-- </div>
+        </div> -->
+
+    </lightning-card>
+</template>

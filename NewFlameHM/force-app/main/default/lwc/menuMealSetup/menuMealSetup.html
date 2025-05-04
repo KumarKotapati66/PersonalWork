@@ -1,0 +1,81 @@
+<template>
+    <lightning-card>
+
+        <!-- Show spinner during save -->
+        <template if:true={isSaving}>
+            <div class="slds-m-left_small slds-is-relative" style="display: inline-block; top: 5px;">
+                <lightning-spinner alternative-text="Saving..." size="small"></lightning-spinner>
+            </div>
+        </template>
+
+        <lightning-accordion allow-multiple-sections-open active-section-name={activeSectionNames}
+            onsectiontoggle={handleSectionToggle}>
+            <template for:each={processedMenuDays} for:item="menuDay">
+                <lightning-accordion-section key={menuDay.name} name={menuDay.name} label={menuDay.name}>
+                    <h2>Select the meal type that you want to setup</h2>
+
+                    <!-- Checkboxes for meal types -->
+                    <div class="checkbox-container">
+                        <template for:each={menuTypeOptions} for:item="option">
+                            <div key={option.value} class="checkbox-item">
+                                <lightning-input type="checkbox" label={option.label} data-day={menuDay.name}
+                                    data-name={option.value} onchange={handleCheckboxChange}>
+                                </lightning-input>
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- Meal type sections - ONLY for this day -->
+                    <div class="meal-type-sections slds-m-top_medium">
+                        <template for:each={menuDay.selectedMealTypes} for:item="mealType">
+                            <div key={mealType.value} class="slds-m-bottom_large slds-p-around_medium slds-border_top">
+                                <h3 class="slds-text-heading_small slds-m-bottom_small">{mealType.label} Items</h3>
+
+                                <lightning-layout multiple-rows>
+                                    <lightning-layout-item size="12" padding="around-small" small-device-size="6"
+                                        medium-device-size="6" large-device-size="6">
+                                        <lightning-dual-listbox name="Categories" label="Select Category"
+                                            source-label="Available" selected-label="Selected"
+                                            field-level-help="Select your preferred Category"
+                                            options={menuCategoriesForMultiSelect} value={mealType.selectedCategories}
+                                            data-day={menuDay.name} data-mealtype={mealType.value}
+                                            onchange={handleCategoryChange}>
+                                        </lightning-dual-listbox>
+                                    </lightning-layout-item>
+
+                                    <lightning-layout-item size="12" padding="around-small" small-device-size="6"
+                                        medium-device-size="6" large-device-size="6">
+                                        <template if:true={mealType.hasCategorySelections}>
+                                            <lightning-dual-listbox name="MenuItems" label="Select Items"
+                                                source-label="Available" selected-label="Selected"
+                                                field-level-help="Select your preferred Items"
+                                                options={mealType.menuItemOptions} value={mealType.selectedItems}
+                                                data-day={menuDay.name} data-mealtype={mealType.value}
+                                                onchange={handleItemChange}>
+                                            </lightning-dual-listbox>
+                                        </template>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </div>
+                        </template>
+                    </div>
+                </lightning-accordion-section>
+            </template>
+        </lightning-accordion>
+
+        <!-- Generate JSON button -->
+        <div class="slds-m-top_medium slds-p-around_medium">
+            <lightning-button label="Generate Menu Configuration" onclick={generateFinalOutput}
+                variant="brand"></lightning-button>
+
+            <!--Dont remove this code. Debug purpose-->
+            <!--<template if:true={showJsonOutput}>
+                <div class="slds-m-top_small slds-p-around_small slds-border_top">
+                    <h3 class="slds-text-heading_small slds-m-bottom_small">Generated JSON Configuration:</h3>
+                    <pre class="slds-box slds-theme_shade slds-p-around_medium">{jsonOutput}</pre>
+                </div>
+            </template>-->
+
+        </div>
+    </lightning-card>
+</template>

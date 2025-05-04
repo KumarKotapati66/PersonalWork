@@ -1,0 +1,100 @@
+<template>
+    <lightning-card title="Mess Schedule">
+
+        <template for:each={days} for:item="day" for:index="dayIndex">
+            <div key={day.name} class="slds-m-vertical_small slds-m-around_medium">
+                <div class="slds-grid slds-p-around_small slds-box slds-theme_shade">
+                    <div class="slds-col slds-size_10-of-12">
+                        <strong>{day.name}</strong>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12 slds-text-align_right">
+                        <lightning-button-icon icon-name="utility:chevrondown" alternative-text="Toggle"
+                            data-index={dayIndex} onclick={toggleDay}>
+                        </lightning-button-icon>
+                    </div>
+                </div>
+
+                <template if:true={day.open}>
+                    <div class="slds-p-around_medium slds-box">
+                        <template for:each={day.meals} for:item="meal" for:index="mealIndex">
+                            <div key={meal} class="slds-p-around_medium slds-box" data-day={dayIndex}
+                                data-index={mealIndex}>
+
+                                <!--First Row: Meal Name & Start Time & Delete Button -->
+                                <div class="slds-grid slds-gutters">
+                                    <div class="slds-col slds-size_4-of-12">
+                                        <lightning-input label="Name of the meal" name="mealName" value={meal.mealName}
+                                            data-index={mealIndex} data-day={dayIndex} onchange={handleMealChange}>
+                                        </lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_4-of-12">
+                                        <lightning-combobox name="mealType" label="Meal Type" value={meal.mealType}
+                                            placeholder="Select Meal Type" options={menuOptions} data-index={mealIndex}
+                                            data-day={dayIndex} onchange={handleMealTypeChange}></lightning-combobox>
+                                    </div>
+                                    <div class="slds-col slds-size_4-of-12 slds-align-bottom">
+                                        <lightning-button-icon icon-name="utility:delete" alternative-text="Remove Meal"
+                                            data-index={mealIndex} data-day={dayIndex} onclick={removeMeal}
+                                            class="slds-m-left_x-small slds-m-top_large">
+                                        </lightning-button-icon>
+                                    </div>
+                                </div>
+
+                                <!-- Second Row: End Time -->
+                                <div class="slds-grid slds-gutters slds-m-top_small">
+
+                                    <div class="slds-col slds-size_6-of-12">
+                                        <lightning-input type="time" label="Start Time" name="startTime"
+                                            value={meal.startTime} data-index={mealIndex} data-day={dayIndex}
+                                            onchange={handleMealChange}>
+                                        </lightning-input>
+                                    </div>
+
+                                    <div class="slds-col slds-size_6-of-12">
+                                        <lightning-input type="time" label="End Time" name="endTime"
+                                            value={meal.endTime} data-index={mealIndex} data-day={dayIndex}
+                                            onchange={handleMealChange}>
+                                        </lightning-input>
+                                    </div>
+                                </div>
+
+                                <!-- Apply to all days checkbox -->
+                                <div class="slds-grid slds-gutters slds-m-top_small">
+                                    <div class="slds-col">
+                                        <lightning-input type="checkbox" label="Apply to all days"
+                                            data-index={mealIndex} data-day={dayIndex} onchange={handleApplyToAllDays}
+                                            disabled={day.disableAddMeal}>
+                                        </lightning-input>
+                                    </div>
+                                </div>
+
+                                <template if:true={meal.error}>
+                                    <div class="slds-text-color_error slds-m-top_small">{meal.errorMessage}</div>
+                                </template>
+
+                            </div>
+                        </template>
+
+                        <div class="slds-m-top_small slds-grid slds-gutters">
+                            <div class="slds-col">
+                                <lightning-button label="Add Meal" data-day={dayIndex} onclick={addMeal}
+                                    variant="neutral" disabled={day.disableAddMeal}>
+                                </lightning-button>
+                            </div>
+                            <!-- <div class="slds-col slds-p-left_medium slds-form-element__control">
+                                <lightning-input type="checkbox" label="Apply to all days" data-day={dayIndex}
+                                    onchange={handleApplyToAllChange}>
+                                </lightning-input>
+                            </div>-->
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <div class="slds-m-top_large slds-text-align_right slds-m-around_medium">
+            <lightning-button label="Save Schedule" onclick={saveSchedule} variant="brand"
+                disabled={disableSaveSchedule}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

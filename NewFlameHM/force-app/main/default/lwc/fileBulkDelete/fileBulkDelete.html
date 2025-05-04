@@ -1,0 +1,26 @@
+<template>
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading Files" size="medium"></lightning-spinner>
+    </template>
+    <lightning-card title="Bulk File Delete" icon-name="standard:files">
+        <div class="slds-p-horizontal_medium">
+            <lightning-datatable
+                key-field="id"
+                data={fileData}
+                columns={columns}
+                onrowselection={handleFileSelection}
+                onrowaction={handleRowAction}
+               >
+            </lightning-datatable>
+            <div class="slds-m-top_medium">
+                <lightning-button
+                label="Delete Selected Files"
+                variant="destructive"
+                onclick={handleDelete}
+                disabled={disableDeleteButton}>
+                </lightning-button>
+            </div>
+            
+        </div>
+    </lightning-card>
+</template>

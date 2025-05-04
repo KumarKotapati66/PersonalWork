@@ -1,0 +1,56 @@
+<template>
+    <div lwc:if={isLoading} >
+        <lightning-spinner alternative-text="Loading" size="medium" variant='brand'></lightning-spinner>
+    </div>
+    <lightning-card>
+        <div class="slds-grid slds-grid_align-end slds-m-right_small feedback">
+            <button class="slds-button slds-button_brand slds-m-left_small slds-m-bottom_x-small" onclick={openModal} style="position: relative;">
+                <!-- Image -->
+                <img src={feedbackImage} alt="Feedback Image" class="feedback-image" />
+                <!-- Overlay Content -->
+                <div class="overlay-content">
+                    <span>Leave FeedBack</span>
+                    <lightning-icon icon-name="utility:forward" size="small" alternative-text="Arrow" class="slds-m-left_xx-small"></lightning-icon>
+                </div>
+            </button>
+        </div>
+        
+       
+    </lightning-card>
+     <!-- Modal Popup -->
+     <template if:true={isModalOpen}>
+        <section role="dialog" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Header -->
+                <header class="slds-modal__header slds-grid slds-grid_align-spread">
+                    <h2 class="slds-text-heading_medium slds-text-align_left">Leave FeedBack</h2>
+                    <lightning-button-icon class="slds-position_absolute slds-right slds-top slds-m-around_none" icon-name="utility:close" alternative-text="Close" onclick={closeModal}></lightning-button-icon>
+                </header>
+
+                <!-- Body -->
+                <div class="slds-modal__content slds-p-around_medium">
+                    <template for:each={messOverAllFeedBack} for:item="question">
+                        <div key={question.questionnaireId} class="slds-m-bottom_medium">
+                            
+                                <lightning-input 
+                                    label={question.questionLabel} 
+                                    type="text"
+                                    data-id={question.questionnaireId} 
+                                    onchange={handleInputChange}>
+                                </lightning-input>
+                            
+                        </div>
+               </template>
+                </div>
+               
+
+                <!-- Footer -->
+                <footer class="slds-modal__footer">
+                    <lightning-button class="slds-m-right_x-small" label="Cancel" onclick={closeModal}></lightning-button>
+                    <lightning-button label="Save" variant="brand" onclick={handleSave}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

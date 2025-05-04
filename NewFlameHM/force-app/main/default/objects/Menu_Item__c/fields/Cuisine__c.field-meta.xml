@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cuisine__c</fullName>
+    <label>Cuisine</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Chinese</fullName>
+                <default>false</default>
+                <label>Chinese</label>
+            </value>
+            <value>
+                <fullName>Gujarati</fullName>
+                <default>false</default>
+                <label>Gujarati</label>
+            </value>
+            <value>
+                <fullName>Indian</fullName>
+                <default>false</default>
+                <label>Indian</label>
+            </value>
+            <value>
+                <fullName>Korean</fullName>
+                <default>false</default>
+                <label>Korean</label>
+            </value>
+            <value>
+                <fullName>Maharashtrian</fullName>
+                <default>false</default>
+                <label>Maharashtrian</label>
+            </value>
+            <value>
+                <fullName>North Indian</fullName>
+                <default>false</default>
+                <label>North Indian</label>
+            </value>
+            <value>
+                <fullName>Punjabi</fullName>
+                <default>false</default>
+                <label>Punjabi</label>
+            </value>
+            <value>
+                <fullName>South Indian</fullName>
+                <default>false</default>
+                <label>South Indian</label>
+            </value>
+            <value>
+                <fullName>Western</fullName>
+                <default>false</default>
+                <label>Western</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

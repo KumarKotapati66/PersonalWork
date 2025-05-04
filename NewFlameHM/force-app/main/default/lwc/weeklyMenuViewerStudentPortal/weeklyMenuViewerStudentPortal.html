@@ -1,0 +1,84 @@
+<template>
+    <div class="slds-p-around_medium">
+       
+       
+        <!-- Loading Spinner -->
+        <div if:true={loading} class="slds-is-relative slds-p-around_medium">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+        <div if:true={noRecords}>
+            <div class="no-items-message">
+                <lightning-icon class="info-icon" icon-name="utility:info" size="small"></lightning-icon>
+                No Items Present for the selected date
+            </div>
+        </div>
+        <!-- Menu Preview Table - only shown after clicking Preview Menu -->
+        <div if:false={noRecords} class="menu-preview slds-p-top_medium">
+            <!-- <h2 class="slds-text-heading_medium">Menu Preview</h2> -->
+
+            <!-- Scroll indicator with icons - removed the div that was causing the gap -->
+            <!-- <div class="scroll-indicator">
+                <span>Scroll horizontally to view more days</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div> -->
+
+            <div class="menu-table-container">
+                <table class="menu-table">
+                    <thead>
+                        <tr>
+                            <th class="menu-label-col"></th>
+                            <template for:each={displayedDays} for:item="day">
+                                <th key={day.formattedDate} class="day-col">
+                                    <!-- Added separate divs with specific classes for selection -->
+                                    <div class="day-name">{day.dayOfWeek}</div>
+                                    <div class="day-formatted">{day.formattedDayMonth}</div>
+                                    <!-- Edit icons will be added dynamically here -->
+                                </th>
+                            </template>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <!-- Loop through each menu type in the specified order -->
+                        <template for:each={orderedMenuTypes} for:item="menuType">
+                            <tr key={menuType} class="menu-type-row">
+                                <td class="menu-type-cell">{menuType}</td>
+
+                                <template for:each={displayedDays} for:item="day">
+                                    <td key={day.formattedDate} class="time-cell" data-menutype={menuType}
+                                        data-day={day.dayOfWeek} data-formattedday={day.formattedDayMonth}>
+                                    </td>
+                                </template>
+                            </tr>
+
+                            <!-- Loop through each category (Cereal, Milk, etc.) for this menu type -->
+                            <template for:each={categories} for:item="category">
+                                <tr key={category} class="menu-item-row">
+                                    <td class="category-cell">{category}</td>
+
+                                    <template for:each={displayedDays} for:item="day">
+                                        <td key={day.formattedDate} class="item-cell" data-menutype={menuType}
+                                            data-day={day.dayOfWeek} data-formattedday={day.formattedDayMonth}
+                                            data-category={category}>
+                                            <!-- Items will be populated here by JS -->
+                                        </td>
+                                    </template>
+                                </tr>
+                            </template>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- <div class="menu-actions slds-p-top_medium">
+                <lightning-button label="Cancel" variant="neutral" class="slds-m-right_small" onclick={handleCancel}>
+                </lightning-button>
+                <lightning-button label="Save Menu" variant="brand" onclick={handleSaveMenu}>
+                </lightning-button>
+            </div> -->
+        </div>
+    </div>
+</template>

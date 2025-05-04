@@ -1,0 +1,200 @@
+/* weeklyMenu.css */
+.mess-menu-wrapper {
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #dddbda;
+}
+
+.menu-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #16325c;
+    margin: 0;
+}
+
+.refresh-button {
+    --sds-c-icon-color-foreground-default: #0070d2;
+}
+
+.menu-table {
+    width: 100%;
+    display: table;
+    border-collapse: collapse;
+}
+
+.header-row {
+    display: table-row;
+    background-color: #f3f2f2;
+}
+
+.meal-row {
+    display: table-row;
+}
+
+.meal-cell, .day-cell, .menu-cell {
+    display: table-cell;
+    vertical-align: top;
+    padding: 10px;
+    border: 1px solid #dddbda;
+}
+
+.meal-cell {
+    width: 130px;
+    background-color: #f8f8f8;
+}
+
+.day-cell {
+    text-align: center;
+    font-weight: 600;
+    width: calc((100% - 130px) / 7);
+}
+
+.day-name {
+    font-size: 14px;
+    color: #16325c;
+}
+
+.day-date {
+    font-size: 12px;
+    color: #706e6b;
+    margin-top: 2px;
+}
+
+.meal-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: #16325c;
+}
+
+.meal-time {
+    font-size: 12px;
+    color: #706e6b;
+    margin-top: 2px;
+}
+
+.menu-items {
+    position: relative;
+    min-height: 80px;
+}
+
+.menu-item {
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    color: #16325c;
+}
+
+.info-icon {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-color: #f3f2f2;
+    border: 1px solid #dddbda;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.info-icon:hover {
+    background-color: #dddbda;
+}
+
+.tooltip-content {
+    position: absolute;
+    z-index: 100;
+    width: 220px;
+    background-color: white;
+    border: 1px solid #dddbda;
+    border-radius: 4px;
+    padding: 8px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+    top: 0;
+    right: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.tooltip-content.hidden {
+    display: none;
+}
+
+.tooltip-content.visible {
+    display: block;
+}
+
+.tooltip-header {
+    font-weight: 600;
+    font-size: 13px;
+    color: #16325c;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #dddbda;
+    padding-bottom: 3px;
+}
+
+.tooltip-item {
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    color: #16325c;
+}
+
+/* Alternate row styling */
+.meal-row:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.meal-row:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Debug section styling */
+.debug-section {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #dddbda;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+/* Loading spinner */
+.loading-spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .menu-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+/* Helper class to hide elements */
+.hidden {
+    display: none !important;
+}

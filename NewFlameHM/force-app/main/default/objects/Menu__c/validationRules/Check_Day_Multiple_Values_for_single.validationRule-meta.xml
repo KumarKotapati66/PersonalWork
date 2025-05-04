@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_Day_Multiple_Values_for_single</fullName>
+    <active>true</active>
+    <description>Validate if there are multiple va;ues selected for Single Record Type</description>
+    <errorConditionFormula>AND(
+    $RecordType.Name = &quot;Single Day&quot;,
+    OR(
+        INCLUDES(Day__c, &quot;Sunday&quot;) &amp;&amp; OR(
+            INCLUDES(Day__c, &quot;Monday&quot;),
+            INCLUDES(Day__c, &quot;Tuesday&quot;),
+            INCLUDES(Day__c, &quot;Wednesday&quot;),
+            INCLUDES(Day__c, &quot;Thursday&quot;),
+            INCLUDES(Day__c, &quot;Friday&quot;),
+            INCLUDES(Day__c, &quot;Saturday&quot;)
+        ),
+        INCLUDES(Day__c, &quot;Monday&quot;) &amp;&amp; OR(
+            INCLUDES(Day__c, &quot;Sunday&quot;),
+            INCLUDES(Day__c, &quot;Tuesday&quot;),
+            INCLUDES(Day__c, &quot;Wednesday&quot;),
+            INCLUDES(Day__c, &quot;Thursday&quot;),
+            INCLUDES(Day__c, &quot;Friday&quot;),
+            INCLUDES(Day__c, &quot;Saturday&quot;)
+        ),
+        INCLUDES(Day__c, &quot;Tuesday&quot;) &amp;&amp; OR(
+            INCLUDES(Day__c, &quot;Monday&quot;),
+            INCLUDES(Day__c, &quot;Sunday&quot;),
+            INCLUDES(Day__c, &quot;Wednesday&quot;),
+            INCLUDES(Day__c, &quot;Thursday&quot;),
+            INCLUDES(Day__c, &quot;Friday&quot;),
+            INCLUDES(Day__c, &quot;Saturday&quot;)
+        ),
+        INCLUDES(Day__c, &quot;Wednesday&quot;) &amp;&amp; OR(
+            INCLUDES(Day__c, &quot;Monday&quot;),
+            INCLUDES(Day__c, &quot;Tuesday&quot;),
+            INCLUDES(Day__c, &quot;Sunday&quot;),
+            INCLUDES(Day__c, &quot;Thursday&quot;),
+            INCLUDES(Day__c, &quot;Friday&quot;),
+            INCLUDES(Day__c, &quot;Saturday&quot;)
+        ),
+        INCLUDES(Day__c, &quot;Thursday&quot;) &amp;&amp; OR(
+            INCLUDES(Day__c, &quot;Monday&quot;),
+            INCLUDES(Day__c, &quot;Tuesday&quot;),
+            INCLUDES(Day__c, &quot;Wednesday&quot;),
+            INCLUDES(Day__c, &quot;Sunday&quot;),
+            INCLUDES(Day__c, &quot;Friday&quot;),
+            INCLUDES(Day__c, &quot;Saturday&quot;)
+        ),
+        INCLUDES(Day__c, &quot;Friday&quot;) &amp;&amp; OR(
+            INCLUDES(Day__c, &quot;Monday&quot;),
+            INCLUDES(Day__c, &quot;Tuesday&quot;),
+            INCLUDES(Day__c, &quot;Wednesday&quot;),
+            INCLUDES(Day__c, &quot;Thursday&quot;),
+            INCLUDES(Day__c, &quot;Sunday&quot;),
+            INCLUDES(Day__c, &quot;Saturday&quot;)
+        ),
+		INCLUDES(Day__c, &quot;Saturday&quot;) &amp;&amp; OR(
+            INCLUDES(Day__c, &quot;Monday&quot;),
+            INCLUDES(Day__c, &quot;Tuesday&quot;),
+            INCLUDES(Day__c, &quot;Wednesday&quot;),
+            INCLUDES(Day__c, &quot;Thursday&quot;),
+            INCLUDES(Day__c, &quot;Friday&quot;),
+            INCLUDES(Day__c, &quot;Sunday&quot;)
+        )
+    )
+)</errorConditionFormula>
+    <errorDisplayField>Day__c</errorDisplayField>
+    <errorMessage>You can only select one &apos;Day&apos; when setting up Single Day Menu.</errorMessage>
+</ValidationRule>

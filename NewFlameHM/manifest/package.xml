@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<!--<members>ItemGroupController</members>
+		<members>ItemGroupControllerTest</members>
+		
+		<members>MessMappingController</members>
+		<members>MenuControllerTest</members>
+		<members>VisitorFoodRequestController</members>
+		<members>VisitorFoodRequestController_Test</members>
+		<members>MessBookingBatch</members>
+		<members>MessBookingBatch_Test</members>
+		<members>MessBookingBatchHandler</members>
+		<members>MessMappingControllerTest</members>
+		<members>CloneMenuController</members>
+		<members>CloneMenuControllerTest</members>-->
+		<members>MenuController</members>
+		<members>DailyMenuController</members>
+		<members>WeeklyMenuController</members>
+		<members>MessScheduleController</members>
+		<members>MessMenuController</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>ItemGroupController</members>
+		<members>MessMapping</members>
+		<members>editMenuViewer</members>
+		<name>AuraDefinitionBundle</name>
+	</types>
+	<types>
+		<!--<members>Hostel_Mess_Management</members>-->
+		<name>CustomApplication</name>
+	</types>
+	<types>
+		<!--<members>Contact.Mess__c</members>-->
+		<members>Account.Is_Active__c</members>
+		<name>CustomField</name>
+	</types>
+	<types>
+		<members>Attendance_Booking__c</members>
+		<members>Item_Group__c</members>
+		<members>Menu_Item__c</members>
+		<members>Menu_Order__c</members>
+		<members>Menu__c</members>
+		<members>Menu_Meal_Setup__c</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
+		<!--<members>Attendance_Booking__c</members>
+		<members>Item_Group__c</members>
+		<members>MenuViewer</members>
+		<members>Menu_Item__c</members>
+		<members>Menu_Order__c</members>
+		<members>Menu__c</members>
+		<members>Mess_Mapping</members>-->
+		<name>CustomTab</name>
+	</types>
+	<types>
+		<!--<members>Home1</members>
+		<members>Hostel_Mess_Management_UtilityBar</members>
+		<members>Item_Group_Record_Page</members>
+		<members>Item_Group_Record_Page1</members>
+		<members>Menu_Record_Page1</members>
+		<members>Menu_Order_Record_Page</members>
+		<members>Attendance_Booking_Record_Page2</members>
+		<members>Menu_Item_Record_Page</members>-->
+		<name>FlexiPage</name>
+	</types>
+	<types>
+		<!--<members>Attendance_Booking__c-Attendance Booking Layout</members>
+		<members>Item_Group__c-Item Group Layout</members>
+		<members>Menu_Item__c-Item Layout</members>
+		<members>Menu_Order__c-Menu Order Layout</members>
+		<members>Menu__c-Menu Layout</members>
+		<members>Menu__c-Single Day</members>
+		<members>Account-Mess Layout</members>-->
+		<name>Layout</name>
+	</types>
+	<types>
+	    <members>menuMealSetup</members>
+		<members>messMenu</members>
+		<members>dailyMenuViewer</members>
+		<members>weeklyMenuViewer</members>
+		<members>messSchedule</members>
+		<members>messScheduleQuickAction</members>
+		<members>menuViewer</members>
+		<members>rateThisMenu</members>
+		<members>messFeedBackForm</members>
+		<!--<members>itemGroupManager</members>
+		
+		
+		<members>messMappingTab</members>
+		<members>studentMessMapping</members>
+		<members>visitorFoodRequest</members>
+		<members>messFeedBackForm</members>
+		<members>multiSelectComboboxMenu</members>
+		<members>rateThisMenu</members>
+		<members>menuNutritionInfo</members>-->
+		<name>LightningComponentBundle</name>
+	</types>
+	<types>
+		<!--<members>Contact.Mess_Mapping</members>
+		<members>Menu__c.Menu_Item_Assignment</members>
+		<members>Menu__c.Clone</members>
+		<members>Menu__c.FeedBack</members>
+		<members>Item_Group__c.Menu_Item_Assignment</members>
+		<members>Account.FeedBack</members>-->
+		<members>Account.Mess_Scheduling</members>
+		<name>QuickAction</name>
+	</types>
+	<types>
+		<members>Account.Mess</members>
+		<members>Menu__c.Single_Day</members>
+		<members>Menu__c.Multi_Day</members>
+		<members>Menu_Order__c.Daily_Menu</members>
+		<members>Menu_Order__c.Template</members>
+		<name>RecordType</name>
+	</types>
+	<version>62.0</version>
+</Package>

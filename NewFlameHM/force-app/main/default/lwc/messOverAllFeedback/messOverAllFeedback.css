@@ -1,0 +1,17 @@
+.feedback {
+    border-radius: 10px;
+}
+.feedback-image {
+    width: 300px; 
+    height: 100px;
+}
+
+.overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; 
+    display: flex;
+    align-items: center;
+}

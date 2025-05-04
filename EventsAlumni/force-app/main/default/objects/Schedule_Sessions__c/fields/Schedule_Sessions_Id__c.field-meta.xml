@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Schedule_Sessions_Id__c</fullName>
+    <displayFormat>Session#{000}</displayFormat>
+    <externalId>false</externalId>
+    <label>Schedule/Sessions Id</label>
+    <trackTrending>false</trackTrending>
+    <type>AutoNumber</type>
+</CustomField>

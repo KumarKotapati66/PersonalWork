@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <label>Category</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Accompaniment</fullName>
+                <default>false</default>
+                <label>Accompaniment</label>
+            </value>
+            <value>
+                <fullName>Beverage</fullName>
+                <default>false</default>
+                <label>Beverage</label>
+            </value>
+            <value>
+                <fullName>Bread</fullName>
+                <default>false</default>
+                <label>Bread</label>
+            </value>
+            <value>
+                <fullName>Cereal</fullName>
+                <default>false</default>
+                <label>Cereal</label>
+            </value>
+            <value>
+                <fullName>Chutney</fullName>
+                <default>false</default>
+                <label>Chutney</label>
+            </value>
+            <value>
+                <fullName>Cold Beverage</fullName>
+                <default>false</default>
+                <label>Cold Beverage</label>
+            </value>
+            <value>
+                <fullName>Curd</fullName>
+                <default>false</default>
+                <label>Curd</label>
+            </value>
+            <value>
+                <fullName>Dal</fullName>
+                <default>false</default>
+                <label>Dal</label>
+            </value>
+            <value>
+                <fullName>Dessert</fullName>
+                <default>false</default>
+                <label>Dessert</label>
+            </value>
+            <value>
+                <fullName>Dry Veg</fullName>
+                <default>false</default>
+                <label>Dry Veg</label>
+            </value>
+            <value>
+                <fullName>Fruits/Juice</fullName>
+                <default>false</default>
+                <label>Fruits/Juice</label>
+            </value>
+            <value>
+                <fullName>Gravy Veg</fullName>
+                <default>false</default>
+                <label>Gravy Veg</label>
+            </value>
+            <value>
+                <fullName>Hot Beverage</fullName>
+                <default>false</default>
+                <label>Hot Beverage</label>
+            </value>
+            <value>
+                <fullName>Indian Breakfast</fullName>
+                <default>false</default>
+                <label>Indian Breakfast</label>
+            </value>
+            <value>
+                <fullName>Jain Dry</fullName>
+                <default>false</default>
+                <label>Jain Dry</label>
+            </value>
+            <value>
+                <fullName>Main</fullName>
+                <default>false</default>
+                <label>Main</label>
+            </value>
+            <value>
+                <fullName>Milk</fullName>
+                <default>false</default>
+                <label>Milk</label>
+            </value>
+            <value>
+                <fullName>Papad/Fryums</fullName>
+                <default>false</default>
+                <label>Papad/Fryums</label>
+            </value>
+            <value>
+                <fullName>Papad / Fryums</fullName>
+                <default>false</default>
+                <label>Papad / Fryums</label>
+            </value>
+            <value>
+                <fullName>Pickle</fullName>
+                <default>false</default>
+                <label>Pickle</label>
+            </value>
+            <value>
+                <fullName>Preserves</fullName>
+                <default>false</default>
+                <label>Preserves</label>
+            </value>
+            <value>
+                <fullName>Rice</fullName>
+                <default>false</default>
+                <label>Rice</label>
+            </value>
+            <value>
+                <fullName>Roti</fullName>
+                <default>false</default>
+                <label>Roti</label>
+            </value>
+            <value>
+                <fullName>Salad</fullName>
+                <default>false</default>
+                <label>Salad</label>
+            </value>
+            <value>
+                <fullName>Side Dish</fullName>
+                <default>false</default>
+                <label>Side Dish</label>
+            </value>
+            <value>
+                <fullName>Snacks</fullName>
+                <default>false</default>
+                <label>Snacks</label>
+            </value>
+            <value>
+                <fullName>Soup</fullName>
+                <default>false</default>
+                <label>Soup</label>
+            </value>
+            <value>
+                <fullName>Spread</fullName>
+                <default>false</default>
+                <label>Spread</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

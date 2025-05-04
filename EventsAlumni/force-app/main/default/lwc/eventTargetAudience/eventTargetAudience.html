@@ -1,0 +1,104 @@
+<template>
+		<p>Who is this event for? <span class="info-text"></span></p>
+		<p>(The event will be visible to the audience you select)</p>
+		<div>
+			<lightning-button variant="brand" label="Students" title="Primary action" onclick={handleStudents}
+				class="slds-m-left_x-small"></lightning-button>
+			<lightning-button variant="brand" label="Faculty" title="Primary action" onclick={handleFaculty}
+				class="slds-m-left_x-small"></lightning-button>
+			<lightning-button variant="brand" label="Alumni" title="Primary action" onclick={handleAlumni}
+				class="slds-m-left_x-small"></lightning-button>
+			<lightning-button variant="brand" label="Non-academic staff" title="Primary action" onclick={handleClick}
+				class="slds-m-left_x-small"></lightning-button>
+			<lightning-button variant="brand" label="Applicable to all" title="Primary action" onclick={handleClick}
+				class="slds-m-left_x-small"></lightning-button>
+		</div>
+		<template if:true={isStudentsSelected}>
+			<br><p>Students preference</p>
+			<div class="preference-box">
+				<div class="slds-grid slds-wrap">
+					<div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+						<c-event-multi-select-combobox label="Program name" showpills="true" onselected={handleSelection}
+                    	placeholder="Select Program name" options={programNameOptions}></c-event-multi-select-combobox>
+					</div>
+	
+					<div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+						<c-event-multi-select-combobox label="Year of graduation" showpills="true" onselected={handleSelection}
+                    	placeholder="Select year of graduation" options={yearOfGraduationOptions}></c-event-multi-select-combobox>
+					</div>
+	
+				</div>
+				
+			</div>
+		</template>
+		<template if:true={isFacultySelected}>
+			<br><p>Faculty preference</p>
+			<div class="preference-box">
+				<div class="slds-grid slds-wrap">
+					<div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+						<c-event-multi-select-combobox label="Program name" showpills="true" onselected={handleSelection}
+                    	placeholder="Select Program name" options={programNameOptions}></c-event-multi-select-combobox>
+					</div>
+	
+					<!--<div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+						<c-event-multi-select-combobox label="Year of graduation" showpills="true" onselected={handleSelection}
+                    	placeholder="Select year of graduation" options={yearOfGraduationOptions}></c-event-multi-select-combobox>
+					</div>-->
+	
+				</div>
+				
+			</div>
+		</template>
+		<template if:true={isAlumniSelected}>
+			<br><p>Alumni preference</p>
+			<div class="preference-box">
+				<div class="slds-grid slds-wrap">
+					<div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+						<c-event-multi-select-combobox label="Program name" showpills="true" onselected={handleSelection}
+                    	placeholder="Select Program name" options={programNameOptions}></c-event-multi-select-combobox>
+					</div>
+	
+					<div class="slds-col slds-size_1-of-2" style="padding: 0.5rem 1rem;">
+						<c-event-multi-select-combobox label="Year of graduation" showpills="true" onselected={handleSelection}
+                    	placeholder="Select year of graduation" options={yearOfGraduationOptions}></c-event-multi-select-combobox>
+					</div>
+	
+				</div>
+				
+			</div>
+		</template>
+		<!--<div class="slds-col slds-large-size_12-of-12">-->
+			<div class="slds-grid slds-wrap">
+				
+				<!--<lightning-record-view-form record-id={eventRecordId} object-api-name="Event_Master__c">
+					<div class="slds-col slds-size_1-of-2 slds-p-around slds-p-top_x-small slds-p-bottom_x-small">
+                    <lightning-output-field field-name="Target_Audience_Applicable__c"></lightning-output-field>
+				</div>
+				
+                </lightning-record-view-form>
+				
+				<div class="slds-col slds-size_1-of-2 slds-p-around slds-p-top_x-small slds-p-bottom_x-small">
+					<lightning-input-field class="custom-input" name="mode" field-name="Target_Audience_Applicable__c">
+					</lightning-input-field>
+				</div>-->
+
+			</div><br>
+		<!--</div>-->
+		<div class="custom-flex-container">
+			<div class="custom-flex-left">
+				<lightning-button class="slds-p-around_xx-small" name="previous" label="Previous"
+					onclick={handlePrevious}>
+				</lightning-button>
+			</div>
+			<div class="custom-flex">
+				<div class="slds-p-around_xx-small">
+					<lightning-button name="cancel" label="Cancel" onclick={handleCancel}>
+					</lightning-button>
+				</div>
+				<div class="slds-p-around_xx-small">
+					<lightning-button variant="brand" type="button" name="save" label="Save and proceed" onclick={handleTargetAudienceSave}>
+					</lightning-button>
+				</div>
+			</div>
+		</div>
+</template>

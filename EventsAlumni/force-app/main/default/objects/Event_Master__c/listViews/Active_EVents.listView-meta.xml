@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_EVents</fullName>
+    <columns>NAME</columns>
+    <columns>Event_Type__c</columns>
+    <columns>Start_Date__c</columns>
+    <columns>Start_Time__c</columns>
+    <columns>End_Date__c</columns>
+    <columns>End_Time__c</columns>
+    <columns>Target_Audience_Applicable__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Is_Active__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Event_Master__c.Event</value>
+    </filters>
+    <label>Active Events</label>
+</ListView>
