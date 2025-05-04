@@ -1,0 +1,11 @@
+<template>
+    <lightning-datatable
+     key-field="Id"
+     data={taskData}
+     columns={columns}
+     onrowselection={handleRowSelection}
+     ></lightning-datatable>
+     <div class="slds-text-align_right slds-m-top_small slds-m-right_small">
+         <lightning-button variant="Brand" label="Mark as Completed" onclick={handleTaskUpdate}></lightning-button>
+     </div>
+</template>

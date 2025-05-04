@@ -1,0 +1,12 @@
+<template>
+    <lightning-card class="slds-p-around_medium">
+        <div class="slds-text-align_right slds-m-bottom_small slds-m-right_small">
+            <lightning-button label="Create Task" onclick={handleOpenModal}></lightning-button>
+        </div>
+        <div if:true={taskData}>
+          <c-task-list task-data={taskData} oncomplete={handleUpdate}></c-task-list>
+        </div>
+        
+       
+    </lightning-card>
+</template>
