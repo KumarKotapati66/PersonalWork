@@ -1,0 +1,23 @@
+<template>
+    <lightning-modal-header label="Create New Task"></lightning-modal-header>
+    <lightning-modal-body>
+                <div class="slds-grid slds-wrap slds-gutters">
+                
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input type="text" name="Status" label="Status" value={fields.Status} onchange={handleFieldChange}></lightning-input>
+                </div>
+                
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input type="text" name="Subject" label="Subject" value={fields.Subject} onchange={handleFieldChange}></lightning-input>
+                </div>
+             
+            </div>
+
+            
+    </lightning-modal-body>
+
+    <lightning-modal-footer>
+        <lightning-button variant="neutral" label="Cancel" onclick={handleClose}></lightning-button>
+        <lightning-button variant="brand" label="Save" onclick={handleSave}></lightning-button>
+    </lightning-modal-footer>
+</template>
